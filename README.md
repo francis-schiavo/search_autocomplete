@@ -76,6 +76,18 @@ You can also search namespaced models by adding the lowercase name of every name
 
 If your model is `Admin::User` the search would be: `{APP URL}/autocomplete/admin/user?term=Roger`
 
+You can also specify more filters and additional fields to display instead of the base field:
+
+```ruby
+class Category < ApplicationRecord
+  belongs_to :category, optional: true
+
+  autocomplete :name, %i[name last_name], %i[last_name]
+end
+```
+
+You can search names AND last_names like this: `{APP URL}/autocomplete/person?term=Roger&last_name=Smith`
+
 ### Search / Filter
 
 You can use the method `search` on your controllers as a way to filter data.

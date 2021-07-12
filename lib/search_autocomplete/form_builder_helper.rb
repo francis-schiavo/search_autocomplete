@@ -8,7 +8,7 @@ module ActionView
     class FormBuilder
       ##
       # Creates an autocomplete element from form builder
-      def autocomplete_field(method, display_value, autocomplete_path, options = {})
+      def autocomplete_field(method, display_value, autocomplete_path, **options)
         options.reverse_merge!(
           'display-value': find_autocomplete_value(display_value),
           value: @object.send(method),

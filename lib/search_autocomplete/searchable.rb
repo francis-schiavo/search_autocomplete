@@ -24,13 +24,13 @@ module ActionController
 
     private
 
-    def prepare_search_fields(table, fields, exact = true)
+    def prepare_search_fields(table, fields, **options)
       search_conditions = []
       fields.each do |field|
         if field.is_a?(Array)
-          search_conditions.push prepare_jsonb_condition(table, field, exact)
+          search_conditions.push prepare_jsonb_condition(table, field, options[:exact])
         else
-          search_conditions.push prepare_simple_condition(table, field, exact)
+          search_conditions.push prepare_simple_condition(table, field, options[:exact])
         end
       end
       search_conditions
