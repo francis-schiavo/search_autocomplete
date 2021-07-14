@@ -14,11 +14,12 @@ module ActionView
           value: @object.send(method),
           url: autocomplete_path,
           minlength: 2,
-          name: "#{@object_name}[#{method}]"
+          name: "#{@object_name}[#{method}]",
+          is: 'auto-complete'
         )
 
         autocomplete_options[:autofocus] = options[:autofocus] if options.include? :autofocus
-        @template.content_tag(:'auto-complete', nil, options)
+        text_field method, options
       end
 
       private
